@@ -1,19 +1,32 @@
-const express = require('express');
-const path = require('path');
-const app = express();
 require('dotenv').config();
+const express = require('express');
+const fetch = require('node-fetch');
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 app.use(express.json());
 
 app.post('/api/chat', async (req, res) => {
-  const { prompt } = req.body;
-  // Use a fake AI reply or public endpoint
-  const response = `You: "${prompt}" — Gabimaru AI is thinking... 🔥`;
+  const userMessage = req.body.message;
+  
+  try {
+    const response = await fetch("https://api-inference.huggingface.co/models/microsoft/DialoGPT-medium", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ inputs: userMessage })
+    });
 
-  // You can later replace this with a fetch to an open API.
-  res.json({ reply: response });
+    const data = await response.json();
+    const reply = data.generated_text || "Sorry, I'm not sure how to reply.";
+
+    res.json({ reply });
+  } catch (err) {
+    console.error("Error talking to HF:", err);
+    res.status(500).json({ reply: "Something went wrong, bruh!" });
+  }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Gabimaru AI running on ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Gabimaru Chat AI running on http://localhost:${PORT}`);
+});
