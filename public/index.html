@@ -3,25 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gabimaru AI</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Gabimaru Chat AI</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
   <header>
-    <h1>Gabimaru AI</h1>
-    <p>The Feared One Listens...</p>
+    <h1>Gabimaru Chat AI</h1>
+    <p class="tagline">AI with vibes. Built by Ayodele David (Gabimaru)</p>
   </header>
 
   <main>
-    <div id="chatbox"></div>
-    <form id="chatForm">
-      <input type="text" id="userInput" placeholder="Ask anything..." autocomplete="off" required />
-      <button type="submit">Send</button>
-    </form>
+    <div id="chatbox">
+      <div class="chat" id="messages"></div>
+      <form id="chat-form">
+        <input type="text" id="user-input" placeholder="Type with swag..." required />
+        <button type="submit">Send</button>
+      </form>
+    </div>
   </main>
 
   <footer>
-    <p>Powered by Gabimaru — Respect the Code.</p>
+    <p>Respect the dev — Gabimaru. Built different.</p>
   </footer>
 
   <script src="script.js"></script>
