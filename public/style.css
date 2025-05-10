@@ -1,74 +1,112 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #0f0f0f;
-  color: #f4f4f4;
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #121212;
+  color: #f5f5f5;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 header {
-  background: #1a1a1a;
-  padding: 20px;
   text-align: center;
-  border-bottom: 2px solid crimson;
+  padding: 1.5rem;
+  background-color: #1e1e1e;
+  box-shadow: 0 2px 8px rgba(255, 0, 0, 0.4);
+}
+
+header h1 {
+  font-size: 2rem;
+  color: #ff5252;
+}
+
+.tagline {
+  margin-top: 0.5rem;
+  font-style: italic;
+  color: #ccc;
 }
 
 main {
   flex: 1;
   display: flex;
-  flex-direction: column;
-  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
 }
 
 #chatbox {
-  flex: 1;
+  width: 100%;
+  max-width: 600px;
+  background-color: #1a1a1a;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+.chat {
+  max-height: 400px;
   overflow-y: auto;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 
 .message {
-  margin-bottom: 15px;
+  margin: 0.8rem 0;
+  padding: 0.8rem;
+  border-radius: 10px;
+  line-height: 1.4;
 }
 
 .user {
+  background-color: #ff1744;
+  color: white;
+  align-self: flex-end;
   text-align: right;
-  color: #00e676;
 }
 
 .bot {
-  text-align: left;
-  color: #ffd54f;
-}
-
-form {
-  display: flex;
-  gap: 10px;
-}
-
-input[type="text"] {
-  flex: 1;
-  padding: 10px;
-  background: #1f1f1f;
-  border: 1px solid #333;
+  background-color: #333;
   color: #fff;
-  border-radius: 5px;
+  align-self: flex-start;
+}
+
+#chat-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+#user-input {
+  flex: 1;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background-color: #2b2b2b;
+  color: #fff;
 }
 
 button {
-  background: crimson;
+  padding: 0.8rem 1.2rem;
+  background-color: #ff5252;
   border: none;
+  border-radius: 8px;
   color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
   cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #ff1744;
 }
 
 footer {
   text-align: center;
-  padding: 10px;
-  background: #1a1a1a;
-  font-size: 14px;
-} 
+  padding: 1rem;
+  font-size: 0.9rem;
+  background-color: #1e1e1e;
+  color: #aaa;
+}
